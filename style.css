@@ -60,3 +60,30 @@ body {
 .main-button:hover {
   background-color: #45a049;
 }
+
+body.skogsbakgrund {
+    background-image: url("images/skog.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.calendar-header {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 100, 0, 0.6);
+    padding: 1em;
+    border-bottom: 2px solid white;
+}
+
+#calendar {
+    max-width: 90%;
+    margin: 2em auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000050;
+}
