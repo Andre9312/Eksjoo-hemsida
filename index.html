@@ -1,22 +1,79 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Eksjöö</title>
-    <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eksjöö</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-image: url('Images/skog.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    header {
+      position: relative;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .corner-img {
+      position: absolute;
+      width: 80px;
+      height: auto;
+      border-radius: 12px;
+    }
+    .left {
+      top: 10px;
+      left: 10px;
+    }
+    .right {
+      top: 10px;
+      right: 10px;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 400px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+    .main-button {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #2d5c2d;
+      padding: 2rem;
+      border: none;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .main-button:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-<body class="skogsbakgrund">
-    <header>
-        <img src="Enebacken.jpg" class="corner-img left"/>
-        <h1>Eksjöö</h1>
-        <img src="./Images/Sjöötorp.jpg" class="corner-img right"/>
-    </header>
-    <main class="button-container">
-        <a href="calendar.html" class="main-button">Kalender</a>
-        <a href="documents.html" class="main-button">Dokument</a>
-        <a href="notes.html" class="main-button">Anteckningar</a>
-    </main>
+<body>
+  <header>
+    <img src="Images/Enebacken.jpg" alt="Enebacken" class="corner-img left" />
+    <h1>Eksjöö</h1>
+    <img src="Images/Sjöötorp.jpg" alt="Sjöötorp" class="corner-img right" />
+  </header>
+  <main class="button-container">
+    <a href="calendar.html" class="main-button">Kalender</a>
+    <a href="documents.html" class="main-button">Dokument</a>
+    <a href="notes.html" class="main-button">Anteckningar</a>
+  </main>
 </body>
 </html>
