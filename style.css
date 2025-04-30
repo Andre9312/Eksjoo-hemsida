@@ -7,32 +7,28 @@ body.skogsbakgrund {
 }
 
 header {
-  position: relative;
   text-align: center;
-  padding: 60px 0;
+  padding: 20px;
 }
 
-h1 {
-  font-size: 3em;
-  margin: 0;
+.top-images {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.corner-img {
-  width: 100px;
-  height: 100px;
+.header-img {
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 20px;
-  position: absolute;
-  top: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.corner-img.left {
-  left: 10px;
-}
-
-.corner-img.right {
-  right: 10px;
+h1 {
+  font-size: 2.8em;
+  margin: 0;
 }
 
 .button-container {
