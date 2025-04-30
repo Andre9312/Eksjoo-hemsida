@@ -87,3 +87,62 @@ body.skogsbakgrund {
     border-radius: 10px;
     box-shadow: 0 0 10px #00000050;
 }
+
+/* Kalenderstruktur */
+#calendar-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 10px;
+}
+
+.calendar-day {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 100px;
+  position: relative;
+  cursor: pointer;
+  font-family: inherit;
+  overflow-y: auto;
+}
+
+.calendar-day.booked {
+  background-color: #d0ecff;
+}
+
+.calendar-day .date-number {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.calendar-day .note {
+  font-size: 0.9rem;
+  margin-top: 4px;
+  position: relative;
+}
+
+.calendar-day .note .delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.8rem;
+  color: red;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  #calendar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
