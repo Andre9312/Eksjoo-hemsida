@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Kalender – Eksjöö</title>
-    <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalender – Eksjöö</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="skogsbakgrund">
-    <header class="calendar-header">
-        <h1>Eksjöö Kalender</h1>
-        <h2>Här kan du lägga in när ni är i Eksjö</h2>
-        <p>Tryck bara på datumen och skriv något</p>
-    </header>
-    <main>
-        <div id="calendar"></div>
-    </main>
+  <header>
+    <h1>Kalender</h1>
+    <h2>Här kan du lägga in när ni är i Eksjö</h2>
+    <p class="info-text">Tryck bara på datumen och skriv något</p>
+  </header>
 
-    <script src="calendar.js"></script>
+  <main>
+    <div id="calendar-controls">
+      <button onclick="prevMonth()">Föregående</button>
+      <span id="monthYear"></span>
+      <button onclick="nextMonth()">Nästa</button>
+    </div>
+    <div id="calendar"></div>
+  </main>
+
+  <script src="calendar.js"></script>
 </body>
 </html>
