@@ -1,39 +1,57 @@
-
 body.skogsbakgrund {
-    background-image: url('images/skog.jpg');
-    background-size: cover;
-    color: #2e4d2e;
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
+  background-image: url('images/skog.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+  position: relative;
+  text-align: center;
+  padding: 60px 0;
+  color: white;
 }
-.corner-img {
-    width: 60px;
-    height: auto;
-}
+
 h1 {
-    font-size: 2rem;
+  font-size: 3em;
+  margin: 0;
 }
+
+.corner-img {
+  width: 80px;
+  height: auto;
+  position: absolute;
+  top: 10px;
+}
+
+.corner-img.left {
+  left: 10px;
+}
+
+.corner-img.right {
+  right: 10px;
+}
+
 .button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 20px;
 }
+
 .main-button {
-    padding: 20px;
-    margin: 15px;
-    background-color: white;
-    border: 2px solid green;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: green;
-    width: 200px;
-    text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.5em;
+  padding: 20px 40px;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.main-button:hover {
+  background-color: #388E3C;
 }
