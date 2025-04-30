@@ -1,56 +1,87 @@
+// calendar.js
 
-document.addEventListener('DOMContentLoaded', function () {
-    const calendar = document.getElementById('calendar');
-    const savedBookings = JSON.parse(localStorage.getItem('calendarBookings')) || {};
+document.addEventListener("DOMContentLoaded", () => {
+    const calendar = document.getElementById("calendar");
+    const monthYear = document.getElementById("monthYear");
+    const prevBtn = document.getElementById("prevMonth");
+    const nextBtn = document.getElementById("nextMonth");
 
-    const now = new Date();
-    const month = now.getMonth();
-    const year = now.getFullYear();
+    let currentDate = new Date();
+    let bookings = JSON.parse(localStorage.getItem("calendarBookings") || "{}");
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    function getWeekNumber(d) {
+        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    }
 
-    const table = document.createElement('table');
-    const headerRow = table.insertRow();
-    ['V', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön'].forEach(day => {
-        const th = document.createElement('th');
-        th.textContent = day;
-        headerRow.appendChild(th);
-    });
+    function renderCalendar(date) {
+        calendar.innerHTML = "";
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const firstDay = new Date(year, month, 1).getDay() || 7;
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    let date = 1;
-    for (let i = 0; i < 6; i++) {
-        const row = table.insertRow();
-        for (let j = 0; j < 8; j++) {
-            const cell = row.insertCell();
-            if (j === 0) {
-                const weekNum = Math.ceil((date + firstDay) / 7);
-                cell.textContent = weekNum;
-                continue;
-            }
-            if ((i === 0 && j < firstDay + 1) || date > daysInMonth) {
-                cell.textContent = '';
-            } else {
-                const key = `${year}-${month + 1}-${date}`;
-                cell.textContent = date;
-                cell.style.cursor = 'pointer';
-                if (savedBookings[key]) {
-                    cell.style.backgroundColor = '#add8e6';
-                    cell.title = savedBookings[key];
+        monthYear.textContent = `${date.toLocaleString("sv-SE", { month: "long" })} ${year}`;
+
+        const startDate = new Date(year, month, 1 - (firstDay - 1));
+        for (let week = 0; week < 6; week++) {
+            const row = document.createElement("div");
+            row.classList.add("calendar-row");
+
+            const weekNum = document.createElement("div");
+            weekNum.classList.add("week-number");
+            weekNum.textContent = `v${getWeekNumber(startDate)}`;
+            row.appendChild(weekNum);
+
+            for (let day = 0; day < 7; day++) {
+                const current = new Date(startDate);
+                current.setDate(startDate.getDate() + week * 7 + day);
+
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-day");
+                cell.textContent = current.getDate();
+
+                const key = `${current.getFullYear()}-${current.getMonth()}-${current.getDate()}`;
+                if (current.getMonth() !== month) {
+                    cell.classList.add("other-month");
                 }
-                cell.addEventListener('click', () => {
-                    const booking = prompt('Vad vill du skriva?');
-                    if (booking) {
-                        savedBookings[key] = booking;
-                        localStorage.setItem('calendarBookings', JSON.stringify(savedBookings));
-                        cell.style.backgroundColor = '#add8e6';
-                        cell.title = booking;
+
+                if (bookings[key]) {
+                    cell.classList.add("booked");
+                    cell.title = bookings[key];
+                }
+
+                cell.addEventListener("click", () => {
+                    const note = prompt("Ange bokning för detta datum:", bookings[key] || "");
+                    if (note) {
+                        bookings[key] = note;
+                        localStorage.setItem("calendarBookings", JSON.stringify(bookings));
+                        renderCalendar(currentDate);
+                    } else if (bookings[key]) {
+                        delete bookings[key];
+                        localStorage.setItem("calendarBookings", JSON.stringify(bookings));
+                        renderCalendar(currentDate);
                     }
                 });
-                date++;
+
+                row.appendChild(cell);
             }
+
+            calendar.appendChild(row);
         }
     }
 
-    calendar.appendChild(table);
+    prevBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate);
+    });
+
+    nextBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
+    });
+
+    renderCalendar(currentDate);
 });
