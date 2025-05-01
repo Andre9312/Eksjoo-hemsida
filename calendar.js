@@ -1,70 +1,55 @@
-const calendarGrid = document.getElementById("calendar-grid");
-const monthLabel = document.getElementById("current-month");
+const monthYearLabel = document.getElementById("month-year");
+const calendarBody = document.getElementById("calendar-body");
+const prevMonthBtn = document.getElementById("prev-month");
+const nextMonthBtn = document.getElementById("next-month");
 
 let currentDate = new Date();
 
-function renderCalendar() {
-  // Ta bort gamla dagar
-  document.querySelectorAll(".calendar-day:not(.header)").forEach(el => el.remove());
+function getWeekNumber(d) {
+  d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+}
 
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+function renderCalendar(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth();
   const firstDay = new Date(year, month, 1);
-  const startDay = (firstDay.getDay() + 6) % 7;
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const lastDay = new Date(year, month + 1, 0);
+  const firstWeekDay = firstDay.getDay() || 7;
 
-  // Visa månadens namn
-  const monthNames = [
-    "Januari", "Februari", "Mars", "April", "Maj", "Juni",
-    "Juli", "Augusti", "September", "Oktober", "November", "December"
-  ];
-  monthLabel.textContent = `${monthNames[month]} ${year}`;
+  monthYearLabel.textContent = `${firstDay.toLocaleString("sv-SE", { month: "long" }).charAt(0).toUpperCase() + firstDay.toLocaleString("sv-SE", { month: "long" }).slice(1)} ${year}`;
+  calendarBody.innerHTML = "";
 
-  // Tomma rutor före månadens start
-  for (let i = 0; i < startDay; i++) {
-    const empty = document.createElement("div");
-    empty.classList.add("calendar-day");
-    calendarGrid.appendChild(empty);
-  }
+  let row = document.createElement("tr");
+  let current = new Date(year, month, 1 - (firstWeekDay - 1));
 
-  // Fyll i dagarna
-  for (let day = 1; day <= daysInMonth; day++) {
-    const cell = document.createElement("div");
-    cell.classList.add("calendar-day");
+  while (current <= lastDay || current.getDay() !== 1) {
+    const weekNumber = getWeekNumber(current);
+    row.innerHTML = `<td class="week-number"><strong>${weekNumber}</strong></td>`;
 
-    const num = document.createElement("div");
-    num.className = "date-number";
-    num.textContent = day;
-    cell.appendChild(num);
-
-    const savedNote = localStorage.getItem(`note-${year}-${month}-${day}`);
-    if (savedNote) {
-      const note = document.createElement("div");
-      note.className = "note";
-      note.textContent = savedNote;
-      cell.appendChild(note);
+    for (let i = 1; i <= 7; i++) {
+      const td = document.createElement("td");
+      td.textContent = current.getMonth() === month ? current.getDate() : "";
+      td.className = current.getMonth() === month ? "active-date" : "inactive";
+      row.appendChild(td);
+      current.setDate(current.getDate() + 1);
     }
 
-    cell.addEventListener("click", () => {
-      const input = prompt("Skriv anteckning för " + day);
-      if (input !== null) {
-        localStorage.setItem(`note-${year}-${month}-${day}`, input);
-        renderCalendar();
-      }
-    });
-
-    calendarGrid.appendChild(cell);
+    calendarBody.appendChild(row);
+    row = document.createElement("tr");
   }
 }
 
-function nextMonth() {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-}
-
-function prevMonth() {
+prevMonthBtn.addEventListener("click", () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-}
+  renderCalendar(currentDate);
+});
 
-document.addEventListener("DOMContentLoaded", renderCalendar);
+nextMonthBtn.addEventListener("click", () => {
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  renderCalendar(currentDate);
+});
+
+renderCalendar(currentDate);
