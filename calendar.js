@@ -1,79 +1,57 @@
-const calendarEl = document.getElementById("calendar");
-const monthYearEl = document.getElementById("monthYear");
-let currentDate = new Date();
+const calendar = document.getElementById("calendar");
+const today = new Date();
+const currentMonth = today.getMonth();
+const currentYear = today.getFullYear();
 
-function getMonthData(year, month) {
-  const firstDay = new Date(year, month, 1).getDay();
-  const totalDays = new Date(year, month + 1, 0).getDate();
-  return { firstDay, totalDays };
+function getNotes(key) {
+  return JSON.parse(localStorage.getItem(key)) || "";
 }
 
-function renderCalendar() {
-  calendarEl.innerHTML = "";
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const { firstDay, totalDays } = getMonthData(year, month);
-  monthYearEl.textContent = currentDate.toLocaleString("sv-SE", { month: "long", year: "numeric" });
+function saveNotes(key, note) {
+  localStorage.setItem(key, JSON.stringify(note));
+}
 
-  const notes = JSON.parse(localStorage.getItem("calendarNotes") || "{}");
+function renderCalendar(month, year) {
+  calendar.innerHTML = "";
 
-  for (let i = 0; i < firstDay; i++) {
+  const firstDay = new Date(year, month).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const weekdayOffset = (firstDay + 6) % 7; // Anpassad till måndag som första dag
+
+  for (let i = 0; i < weekdayOffset; i++) {
     const empty = document.createElement("div");
-    calendarEl.appendChild(empty);
+    calendar.appendChild(empty);
   }
 
-  for (let day = 1; day <= totalDays; day++) {
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateKey = `${year}-${month + 1}-${day}`;
     const cell = document.createElement("div");
     cell.className = "calendar-day";
-    const dateKey = `${year}-${month + 1}-${day}`;
-    const dateLabel = document.createElement("div");
-    dateLabel.className = "date-number";
-    dateLabel.textContent = day;
-    cell.appendChild(dateLabel);
 
-    if (notes[dateKey]) {
+    const dateNum = document.createElement("div");
+    dateNum.className = "date-number";
+    dateNum.textContent = day;
+    cell.appendChild(dateNum);
+
+    const noteText = document.createElement("div");
+    noteText.className = "calendar-notes";
+    noteText.textContent = getNotes(dateKey);
+    cell.appendChild(noteText);
+
+    if (noteText.textContent.trim() !== "") {
       cell.classList.add("booked");
-      notes[dateKey].forEach((note, index) => {
-        const noteEl = document.createElement("div");
-        noteEl.className = "note";
-        noteEl.textContent = note;
-        const del = document.createElement("span");
-        del.textContent = " x";
-        del.className = "delete";
-        del.onclick = (e) => {
-          e.stopPropagation();
-          notes[dateKey].splice(index, 1);
-          if (notes[dateKey].length === 0) delete notes[dateKey];
-          localStorage.setItem("calendarNotes", JSON.stringify(notes));
-          renderCalendar();
-        };
-        noteEl.appendChild(del);
-        cell.appendChild(noteEl);
-      });
     }
 
     cell.onclick = () => {
-      const text = prompt("Skriv in en anteckning för " + dateKey);
-      if (text) {
-        if (!notes[dateKey]) notes[dateKey] = [];
-        notes[dateKey].push(text);
-        localStorage.setItem("calendarNotes", JSON.stringify(notes));
-        renderCalendar();
+      const newNote = prompt("Anteckning för " + dateKey + ":", getNotes(dateKey));
+      if (newNote !== null) {
+        saveNotes(dateKey, newNote.trim());
+        renderCalendar(month, year);
       }
     };
 
-    calendarEl.appendChild(cell);
+    calendar.appendChild(cell);
   }
 }
 
-function nextMonth() {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-}
-
-function prevMonth() {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-}
-
-renderCalendar();
+renderCalendar(currentMonth, currentYear);
