@@ -4,22 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kalender – Eksjöö</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body class="skogsbakgrund">
   <header>
     <h1>Kalender</h1>
     <h2>Här kan du lägga in när ni är i Eksjö</h2>
-    <p class="info-text">Tryck bara på datumen och skriv något</p>
+    <p>Tryck bara på datumen och skriv något</p>
   </header>
 
   <main>
-    <div id="calendar-controls">
-      <button onclick="prevMonth()">Föregående</button>
-      <span id="monthYear"></span>
-      <button onclick="nextMonth()">Nästa</button>
-    </div>
-    <div id="calendar"></div>
+    <div id="calendar" class="calendar"></div>
   </main>
 
   <script src="calendar.js"></script>
