@@ -16,32 +16,22 @@
   </header>
   
   <main>
-    <h2>Kalender</h2>
+<h2>Kalender</h2>
 <div id="calendar-controls">
-  <button onclick="prevMonth()">Föregående</button>
+  <button onclick="prevMonth()">‹</button>
   <h3 id="current-month"></h3>
-  <button onclick="nextMonth()">Nästa</button>
+  <button onclick="nextMonth()">›</button>
 </div>
-<table id="calendar">
-  <thead>
-    <tr>
-      <th>Vecka</th>
-      <th>Mån</th>
-      <th>Tis</th>
-      <th>Ons</th>
-      <th>Tors</th>
-      <th>Fre</th>
-      <th>Lör</th>
-      <th>Sön</th>
-    </tr>
-  </thead>
-  <tbody id="calendar-body"></tbody>
-</table>
-    <div id="calendar-controls">
-      <button onclick="prevMonth()">Föregående</button>
-      <span id="monthLabel"></span>
-      <button onclick="nextMonth()">Nästa</button>
-    </div>
+
+<div id="calendar-grid">
+  <div class="calendar-day header">Mån</div>
+  <div class="calendar-day header">Tis</div>
+  <div class="calendar-day header">Ons</div>
+  <div class="calendar-day header">Tors</div>
+  <div class="calendar-day header">Fre</div>
+  <div class="calendar-day header">Lör</div>
+  <div class="calendar-day header">Sön</div>
+  </div>
     <div id="calendar"></div>
   </main>
 
