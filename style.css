@@ -71,78 +71,49 @@ body.skogsbakgrund {
     padding: 0;
 }
 
-.calendar-header {
-    text-align: center;
-    color: white;
-    background-color: rgba(0, 100, 0, 0.6);
-    padding: 1em;
-    border-bottom: 2px solid white;
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
-#calendar {
-    max-width: 90%;
-    margin: 2em auto;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 1em;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #00000050;
-}
-
-/* Kalenderstruktur */
-#calendar-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-#calendar {
+/* Kalender-stilarna från tidigare med justerade kvadratiska rutor */
+.calendar {
+  max-width: 100%;
+  margin: 1rem auto;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  max-width: 1000px;
-  margin: auto;
-  padding: 10px;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
 }
 
 .calendar-day {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  padding: 10px;
-  min-height: 100px;
-  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  padding: 5px;
   cursor: pointer;
-  font-family: inherit;
-  overflow-y: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .calendar-day.booked {
-  background-color: #d0ecff;
+  background-color: #cceeff;
 }
 
-.calendar-day .date-number {
+.date-number {
   font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.calendar-day .note {
   font-size: 0.9rem;
+}
+
+.calendar-notes {
+  font-size: 0.7rem;
   margin-top: 4px;
-  position: relative;
-}
-
-.calendar-day .note .delete {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 0.8rem;
-  color: red;
-  cursor: pointer;
-}
-
-@media (max-width: 600px) {
-  #calendar {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  overflow: hidden;
+  max-height: 3em;
+  line-height: 1.2em;
 }
