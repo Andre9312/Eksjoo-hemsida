@@ -206,4 +206,25 @@ main {
     padding: 0.4em 0.8em;
     font-size: 0.9em;
   }
+  #calendar {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+#calendar th, #calendar td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  height: 60px;
+}
+
+#calendar-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
 }
