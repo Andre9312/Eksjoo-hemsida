@@ -43,4 +43,14 @@
     </tbody>
   </table>
   </div>
+  <script>
+function editNote(cell) {
+  const noteDiv = cell.querySelector(".note");
+  const currentNote = noteDiv.textContent || "";
+  const newNote = prompt("Skriv en anteckning för detta datum:", currentNote);
+  if (newNote !== null) {
+    noteDiv.textContent = newNote;
+  }
+}
+  </script>
 </html>
