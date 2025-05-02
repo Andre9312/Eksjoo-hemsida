@@ -663,3 +663,23 @@ table.calendar th {
   background-color: #e0f0ff;
   cursor: pointer;
 }
+.date-cell {
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+  vertical-align: top;
+  height: 100px;
+  width: 120px;
+}
+
+.date-cell .date {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.date-cell .note {
+  font-size: 0.9em;
+  white-space: normal;
+  overflow-wrap: break-word;
+  margin-top: 4px;
+}
