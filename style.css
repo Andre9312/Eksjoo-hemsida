@@ -683,3 +683,71 @@ table.calendar th {
   overflow-wrap: break-word;
   margin-top: 4px;
 }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.calendar-container {
+  max-width: 400px;
+  background-color: #e8f0fe;
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #5a7fba;
+  border-radius: 15px;
+  color: white;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.calendar-grid > div {
+  padding: 8px 0;
+  font-weight: bold;
+}
+
+.week-label {
+  background-color: transparent;
+}
+
+.calendar-day {
+  background-color: white;
+  min-height: 60px;
+  border-radius: 10px;
+  position: relative;
+  font-weight: normal;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.calendar-day.inactive {
+  color: #ccc;
+}
+
+.week-number {
+  font-weight: bold;
+  padding-top: 20px;
+}
