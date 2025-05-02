@@ -508,3 +508,71 @@ main {
   background-color: #d1e7dd;
   font-weight: bold;
 }
+body.skogsbakgrund {
+  background-image: url('images/skog.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.calendar-container {
+  max-width: 1000px;
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 50px repeat(7, 1fr);
+  gap: 1px;
+  margin-top: 1rem;
+  background: #fff;
+}
+
+.day-label, .week-label {
+  background: #2e7d32;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.week-label {
+  font-weight: bold;
+  background: #1b5e20;
+}
+
+.weekend {
+  background: #33691e;
+}
+
+.date-cell {
+  min-height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.date-cell:hover {
+  background: #c8e6c9;
+}
+
+.date-cell.today {
+  outline: 2px solid #66bb6a;
+}
