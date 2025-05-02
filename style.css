@@ -576,3 +576,50 @@ body.skogsbakgrund {
 .date-cell.today {
   outline: 2px solid #66bb6a;
 }
+.calendar-container {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-family: 'Roboto', sans-serif;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 40px repeat(7, 1fr); /* Veckonummer + 7 dagar */
+    gap: 4px;
+    margin-top: 1rem;
+}
+
+.calendar-row {
+    display: contents;
+}
+
+.week-number {
+    font-weight: bold;
+    text-align: center;
+    padding: 6px;
+    background-color: #e0f0e0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.calendar-cell {
+    aspect-ratio: 1 / 1;
+    min-height: 70px;
+    background-color: #f0f8f0;
+    border-radius: 6px;
+    padding: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+}
+
+.calendar-day {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+}
