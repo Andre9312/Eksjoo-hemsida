@@ -12,24 +12,35 @@
     <p>Här kan du lägga in när ni är i Eksjö</p>
     <p>Tryck bara på datumen och skriv något</p>
   </header>
-  <main class="calendar-container">
-    <div class="calendar-header">
-      <button id="prevMonth">&lt;</button>
-      <h2 id="monthYear">Maj 2025</h2>
-      <button id="nextMonth">&gt;</button>
-    </div>
-    <div class="calendar-grid">
-      <div class="week-label">Vecka</div>
-      <div class="day-label">Mån</div>
-      <div class="day-label">Tis</div>
-      <div class="day-label">Ons</div>
-      <div class="day-label">Tors</div>
-      <div class="day-label">Fre</div>
-      <div class="day-label weekend">Lör</div>
-      <div class="day-label weekend">Sön</div>
-      <!-- Kalenderdatum genereras här med JS -->
-    </div>
-  </main>
-  <script src="calendar.js"></script>
-</body>
+  <div class="calendar-container">
+  <h2>Maj 2025</h2>
+  <table class="calendar">
+    <thead>
+      <tr>
+        <th>V</th>
+        <th>Mån</th>
+        <th>Tis</th>
+        <th>Ons</th>
+        <th>Tors</th>
+        <th>Fre</th>
+        <th>Lör</th>
+        <th>Sön</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="week-number">18</td>
+        <td class="date-cell" onclick="editNote(this)">
+          <div class="date">28</div>
+          <div class="note"></div>
+        </td>
+        <td class="date-cell" onclick="editNote(this)">
+          <div class="date">29</div>
+          <div class="note"></div>
+        </td>
+        <!-- Lägg till fler celler enligt mönstret ovan -->
+      </tr>
+    </tbody>
+  </table>
+  </div>
 </html>
