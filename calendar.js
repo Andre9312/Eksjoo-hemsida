@@ -1,55 +1,81 @@
-const monthYearLabel = document.getElementById("month-year");
-const calendarBody = document.getElementById("calendar-body");
-const prevMonthBtn = document.getElementById("prev-month");
-const nextMonthBtn = document.getElementById("next-month");
+const calendarGrid = document.querySelector('.calendar-grid');
+const monthYear = document.getElementById('monthYear');
+const prevBtn = document.getElementById('prevMonth');
+const nextBtn = document.getElementById('nextMonth');
 
 let currentDate = new Date();
 
-function getWeekNumber(d) {
-  d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
-}
+function generateCalendar(date) {
+  calendarGrid.querySelectorAll('.date-cell, .week-number').forEach(e => e.remove());
 
-function renderCalendar(date) {
   const year = date.getFullYear();
   const month = date.getMonth();
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
-  const firstWeekDay = firstDay.getDay() || 7;
 
-  monthYearLabel.textContent = `${firstDay.toLocaleString("sv-SE", { month: "long" }).charAt(0).toUpperCase() + firstDay.toLocaleString("sv-SE", { month: "long" }).slice(1)} ${year}`;
-  calendarBody.innerHTML = "";
+  const startDay = (firstDay.getDay() + 6) % 7; // Måndag = 0
+  const totalDays = lastDay.getDate();
 
-  let row = document.createElement("tr");
-  let current = new Date(year, month, 1 - (firstWeekDay - 1));
+  let currentRowDate = new Date(year, month, 1 - startDay);
+  const today = new Date();
 
-  while (current <= lastDay || current.getDay() !== 1) {
-    const weekNumber = getWeekNumber(current);
-    row.innerHTML = `<td class="week-number"><strong>${weekNumber}</strong></td>`;
+  while (currentRowDate <= lastDay || currentRowDate.getDay() !== 1) {
+    const weekNumber = getWeekNumber(new Date(currentRowDate));
+    const weekCell = document.createElement('div');
+    weekCell.classList.add('week-number');
+    weekCell.innerHTML = `<strong>${weekNumber}</strong>`;
+    weekCell.style.textAlign = "center";
+    calendarGrid.appendChild(weekCell);
 
-    for (let i = 1; i <= 7; i++) {
-      const td = document.createElement("td");
-      td.textContent = current.getMonth() === month ? current.getDate() : "";
-      td.className = current.getMonth() === month ? "active-date" : "inactive";
-      row.appendChild(td);
-      current.setDate(current.getDate() + 1);
+    for (let i = 0; i < 7; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('date-cell');
+      cell.textContent = currentRowDate.getDate();
+
+      if (
+        currentRowDate.getMonth() !== month
+      ) {
+        cell.style.opacity = "0.3";
+      }
+
+      if (
+        currentRowDate.toDateString() === today.toDateString()
+      ) {
+        cell.classList.add('today');
+      }
+
+      cell.addEventListener('click', () => {
+        const note = prompt("Skriv en anteckning för " + currentRowDate.toLocaleDateString());
+        if (note) {
+          cell.innerHTML = `<strong>${currentRowDate.getDate()}</strong><br>${note}`;
+        }
+      });
+
+      calendarGrid.appendChild(cell);
+      currentRowDate.setDate(currentRowDate.getDate() + 1);
     }
-
-    calendarBody.appendChild(row);
-    row = document.createElement("tr");
   }
+
+  const monthNames = ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'];
+  monthYear.textContent = `${monthNames[month]} ${year}`;
 }
 
-prevMonthBtn.addEventListener("click", () => {
+function getWeekNumber(date) {
+  const temp = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  temp.setHours(0, 0, 0, 0);
+  temp.setDate(temp.getDate() + 3 - ((temp.getDay() + 6) % 7));
+  const week1 = new Date(temp.getFullYear(), 0, 4);
+  return 1 + Math.round(((temp - week1) / 86400000 - 3 + ((week1.getDay() + 6) % 7)) / 7);
+}
+
+prevBtn.addEventListener('click', () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar(currentDate);
+  generateCalendar(currentDate);
 });
 
-nextMonthBtn.addEventListener("click", () => {
+nextBtn.addEventListener('click', () => {
   currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar(currentDate);
+  generateCalendar(currentDate);
 });
 
-renderCalendar(currentDate);
+generateCalendar(currentDate);
