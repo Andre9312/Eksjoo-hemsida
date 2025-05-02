@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalender</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="skogsbakgrund">
-  <div class="calendar-container">
+  <header>
+    <h1>Eksjöö Kalender</h1>
+    <p>Här kan du lägga in när ni är i Eksjö</p>
+    <p>Tryck bara på datumen och skriv något</p>
+  </header>
+  <main class="calendar-container">
     <div class="calendar-header">
-      <button id="prev-month">&lt;</button>
-      <h2 id="month-year"></h2>
-      <button id="next-month">&gt;</button>
+      <button id="prevMonth">&lt;</button>
+      <h2 id="monthYear">Maj 2025</h2>
+      <button id="nextMonth">&gt;</button>
     </div>
-    <table class="calendar">
-      <thead>
-        <tr>
-          <th>Vecka</th>
-          <th>Mån</th>
-          <th>Tis</th>
-          <th>Ons</th>
-          <th>Tor</th>
-          <th>Fre</th>
-          <th>Lör</th>
-          <th>Sön</th>
-        </tr>
-      </thead>
-      <tbody id="calendar-body"></tbody>
-    </table>
-  </div>
+    <div class="calendar-grid">
+      <div class="week-label">Vecka</div>
+      <div class="day-label">Mån</div>
+      <div class="day-label">Tis</div>
+      <div class="day-label">Ons</div>
+      <div class="day-label">Tors</div>
+      <div class="day-label">Fre</div>
+      <div class="day-label weekend">Lör</div>
+      <div class="day-label weekend">Sön</div>
+      <!-- Kalenderdatum genereras här med JS -->
+    </div>
+  </main>
   <script src="calendar.js"></script>
 </body>
 </html>
