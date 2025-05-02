@@ -1,56 +1,24 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kalender</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="skogsbakgrund">
-  <header>
-    <h1>Eksjöö Kalender</h1>
-    <p>Här kan du lägga in när ni är i Eksjö</p>
-    <p>Tryck bara på datumen och skriv något</p>
-  </header>
+<body>
   <div class="calendar-container">
-  <h2>Maj 2025</h2>
-  <table class="calendar">
-    <thead>
-      <tr>
-        <th>V</th>
-        <th>Mån</th>
-        <th>Tis</th>
-        <th>Ons</th>
-        <th>Tors</th>
-        <th>Fre</th>
-        <th>Lör</th>
-        <th>Sön</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="week-number">18</td>
-        <td class="date-cell" onclick="editNote(this)">
-          <div class="date">28</div>
-          <div class="note"></div>
-        </td>
-        <td class="date-cell" onclick="editNote(this)">
-          <div class="date">29</div>
-          <div class="note"></div>
-        </td>
-        <!-- Lägg till fler celler enligt mönstret ovan -->
-      </tr>
-    </tbody>
-  </table>
+    <div class="calendar-header">
+      <button id="prevMonth">&#10094;</button>
+      <h2 id="monthYear"></h2>
+      <button id="nextMonth">&#10095;</button>
+    </div>
+    <div class="calendar-grid">
+      <div class="week-label">V</div>
+      <div>M</div><div>T</div><div>O</div><div>T</div><div>F</div><div>L</div><div>S</div>
+      <div id="calendarBody"></div>
+    </div>
   </div>
-  <script>
-function editNote(cell) {
-  const noteDiv = cell.querySelector(".note");
-  const currentNote = noteDiv.textContent || "";
-  const newNote = prompt("Skriv en anteckning för detta datum:", currentNote);
-  if (newNote !== null) {
-    noteDiv.textContent = newNote;
-  }
-}
-  </script>
+  <script src="calendar.js"></script>
+</body>
 </html>
