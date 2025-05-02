@@ -417,7 +417,74 @@ main {
   padding: 0.5rem;
   text-align: center;
 }
+.calendar-container {
+  max-width: 90%;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3a3a3a;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-family: 'Verdana', sans-serif;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Verdana', sans-serif;
+}
+
+.calendar thead th {
+  background-color: #f4f4f4;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.calendar td {
+  text-align: center;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  min-width: 40px;
+  max-width: 50px;
+}
+
+.active-date {
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.inactive {
+  background-color: #f0f0f0;
+  color: #999;
+}
+
+.week-number {
+  background-color: #d1e7dd;
+  font-weight: bold;
+}
 .calendar td {
   text-align: center;
   padding: 0.75rem;
