@@ -176,7 +176,7 @@ body.skogsbakgrund {
 
 /* Huvudcontainer */
 .kalender-wrapper {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.65);
   margin: 2rem auto;
   padding: 1rem;
   border-radius: 1rem;
