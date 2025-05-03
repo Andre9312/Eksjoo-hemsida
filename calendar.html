@@ -2,155 +2,27 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kalender - Eksjöö</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalender</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body class="skogsbakgrund">
-  <!-- Rubrik med samma typsnitt som startsidan -->
-  <header class="kalender-header">
-    <h1>Kalender</h1>
-    <p class="kalender-subtitle">Här kan du lägga in när ni är i Eksjö</p>
-    <p class="kalender-text">Tryck bara på datumen och skriv något</p>
-  </header>
+  <div class="kalender-wrapper">
+    <header>
+      <h1>Kalender</h1>
+    </header>
 
-  <!-- Kalender-rutan -->
-  <div class="kalender-container">
     <div class="kalender-nav">
-      <button>&lt;</button>
-      <h2></h2>
-      <button>&gt;</button>
+      <button id="prev">Föregående</button>
+      <h2 id="kalender-titel"></h2>
+      <button id="next">Nästa</button>
     </div>
 
-    <!-- Veckodagar och veckor -->
-    <div class="kalender-grid">
-      <div class="veckonummer">v18</div>
-      <div class="veckodag">Mån</div>
-      <div class="veckodag">Tis</div>
-      <div class="veckodag">Ons</div>
-      <div class="veckodag">Tors</div>
-      <div class="veckodag">Fre</div>
-      <div class="veckodag">Lör</div>
-      <div class="veckodag">Sön</div>
-
-      <!-- Vecka 18 -->
-      <div class="veckonummer">v18</div>
-      <div class="kalender-cell"></div>
-      <div class="kalender-cell">29</div>
-      <div class="kalender-cell">30</div>
-      <div class="kalender-cell">1</div>
-      <div class="kalender-cell">2</div>
-      <div class="kalender-cell">3</div>
-      <div class="kalender-cell">4</div>
-
-      <!-- Vecka 19 -->
-      <div class="veckonummer">v19</div>
-      <div class="kalender-cell">5</div>
-      <div class="kalender-cell">6</div>
-      <div class="kalender-cell">7</div>
-      <div class="kalender-cell">8</div>
-      <div class="kalender-cell">9</div>
-      <div class="kalender-cell">10</div>
-      <div class="kalender-cell">11</div>
-
-      <!-- Vecka 20 -->
-      <div class="veckonummer">v20</div>
-      <div class="kalender-cell">12</div>
-      <div class="kalender-cell">13</div>
-      <div class="kalender-cell">14</div>
-      <div class="kalender-cell">15</div>
-      <div class="kalender-cell">16</div>
-      <div class="kalender-cell">17</div>
-      <div class="kalender-cell">18</div>
-
-      <!-- Vecka 21 -->
-      <div class="veckonummer">v21</div>
-      <div class="kalender-cell">19</div>
-      <div class="kalender-cell">20</div>
-      <div class="kalender-cell">21</div>
-      <div class="kalender-cell">22</div>
-      <div class="kalender-cell">23</div>
-      <div class="kalender-cell">24</div>
-      <div class="kalender-cell">25</div>
-
-      <!-- Vecka 22 -->
-      <div class="veckonummer">v22</div>
-      <div class="kalender-cell">26</div>
-      <div class="kalender-cell">27</div>
-      <div class="kalender-cell">28</div>
-      <div class="kalender-cell">29</div>
-      <div class="kalender-cell">30</div>
-      <div class="kalender-cell">31</div>
-      <div class="kalender-cell"></div>
+    <div class="kalender-grid" id="kalender-grid">
+      <!-- Datum och veckonummer genereras med JavaScript -->
     </div>
   </div>
-  <script>
-  const monthNames = [
-    "Januari", "Februari", "Mars", "April", "Maj", "Juni",
-    "Juli", "Augusti", "September", "Oktober", "November", "December"
-  ];
 
-  let currentDate = new Date(2025, 4); // Startar i maj 2025
-
-  const header = document.querySelector(".kalender-nav h2");
-  const prevBtn = document.querySelector(".kalender-nav button:first-child");
-  const nextBtn = document.querySelector(".kalender-nav button:last-child");
-  const grid = document.querySelector(".kalender-grid");
-
-  prevBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    updateCalendar();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    updateCalendar();
-  });
-
-  function updateCalendar() {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-
-    header.textContent = `${monthNames[month]} ${year}`;
-    
-    // Här kan du lägga in dynamisk generering av kalendern (kommer i nästa steg)
-  }
-
-  updateCalendar(); // Visa startmånad
-  </script><script>
-  const monthNames = [
-    "Januari", "Februari", "Mars", "April", "Maj", "Juni",
-    "Juli", "Augusti", "September", "Oktober", "November", "December"
-  ];
-
-  let currentDate = new Date(2025, 4); // Startar i maj 2025
-
-  const header = document.querySelector(".kalender-nav h2");
-  const prevBtn = document.querySelector(".kalender-nav button:first-child");
-  const nextBtn = document.querySelector(".kalender-nav button:last-child");
-  const grid = document.querySelector(".kalender-grid");
-
-  prevBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    updateCalendar();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    updateCalendar();
-  });
-
-  function updateCalendar() {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-
-    header.textContent = `${monthNames[month]} ${year}`;
-    
-    // Här kan du lägga in dynamisk generering av kalendern (kommer i nästa steg)
-  }
-
-  updateCalendar(); // Visa startmånad
-  </script>
+  <script src="calendar.js"></script>
 </body>
 </html>
