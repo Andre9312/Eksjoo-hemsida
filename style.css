@@ -76,3 +76,92 @@ body {
 }
 
 //Här slutar startsidan//
+
+/* Typsnitt och grundläggande stil */
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Skogsbakgrund */
+.skogsbakgrund {
+  background-image: url('images/skog.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+/* Rubrik och underrubrik */
+.kalender-header {
+  text-align: center;
+  color: white;
+  padding-top: 30px;
+}
+.kalender-subtitle {
+  margin-top: 0;
+  font-weight: bold;
+}
+.kalender-text {
+  margin-bottom: 20px;
+  font-size: 0.9em;
+}
+
+/* Huvudkalender-ruta */
+.kalender-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Navigering för månad */
+.kalender-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.kalender-nav button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Kalendergrid */
+.kalender-grid {
+  display: grid;
+  grid-template-columns: 60px repeat(7, 1fr); /* För veckonummer + 7 dagar */
+  gap: 5px;
+  text-align: center;
+}
+
+/* Veckodagar */
+.veckodag {
+  font-weight: bold;
+  background: #f0f0f0;
+  padding: 10px 0;
+  border-radius: 6px;
+}
+
+/* Veckonummer */
+.veckonummer {
+  font-weight: bold;
+  background: #e0ffe0;
+  padding: 10px 0;
+  border-radius: 6px;
+  color: #2e7d32;
+}
+
+/* Datum-rutor */
+.kalender-cell {
+  background: #eaf4ff;
+  border-radius: 6px;
+  height: 60px;
+  padding-top: 10px;
+}
