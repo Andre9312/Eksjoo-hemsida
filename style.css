@@ -165,3 +165,72 @@ body {
   height: 60px;
   padding-top: 10px;
 }
+/* Skogsbakgrund från startsidan */
+body.skogsbakgrund {
+  background-image: url("images/skog.jpg");
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Huvudcontainer */
+.kalender-wrapper {
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 700px;
+  box-shadow: 0 0 10px #333;
+}
+
+/* Titel */
+.kalender-wrapper h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Navigering */
+.kalender-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.kalender-nav h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Rutnät */
+.kalender-grid {
+  display: grid;
+  grid-template-columns: 40px repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Celler */
+.kalender-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.vecka-cell {
+  font-weight: bold;
+  background-color: #eaeaea;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.kalender-cell {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  height: 60px;
+  text-align: right;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
