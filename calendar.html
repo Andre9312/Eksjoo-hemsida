@@ -3,9 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kalender</title>
+  <title>Kalender - Eksjöö</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body class="skogsbakgrund">
+  <!-- Rubrik med samma typsnitt som startsidan -->
+  <header class="kalender-header">
+    <h1>Kalender</h1>
+    <p class="kalender-subtitle">Här kan du lägga in när ni är i Eksjö</p>
+    <p class="kalender-text">Tryck bara på datumen och skriv något</p>
+  </header>
+
+  <!-- Kalender-rutan -->
+  <div class="kalender-container">
+    <div class="kalender-nav">
+      <button>&lt;</button>
+      <h2>Maj 2025</h2>
+      <button>&gt;</button>
+    </div>
+
+    <!-- Veckodagar och veckonummer -->
+    <div class="kalender-grid">
+      <div class="veckonummer">v18</div>
+      <div class="veckodag">Mån</div>
+      <div class="veckodag">Tis</div>
+      <div class="veckodag">Ons</div>
+      <div class="veckodag">Tors</div>
+      <div class="veckodag">Fre</div>
+      <div class="veckodag">Lör</div>
+      <div class="veckodag">Sön</div>
+
+      <!-- Exempel på en vecka -->
+      <div class="veckonummer">v19</div>
+      <div class="kalender-cell">1</div>
+      <div class="kalender-cell">2</div>
+      <div class="kalender-cell">3</div>
+      <div class="kalender-cell">4</div>
+      <div class="kalender-cell">5</div>
+      <div class="kalender-cell">6</div>
+      <div class="kalender-cell">7</div>
+      <!-- Lägg till fler rader här -->
+    </div>
+  </div>
 </body>
 </html>
