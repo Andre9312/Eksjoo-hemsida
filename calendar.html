@@ -85,5 +85,72 @@
       <div class="kalender-cell"></div>
     </div>
   </div>
+  <script>
+  const monthNames = [
+    "Januari", "Februari", "Mars", "April", "Maj", "Juni",
+    "Juli", "Augusti", "September", "Oktober", "November", "December"
+  ];
+
+  let currentDate = new Date(2025, 4); // Startar i maj 2025
+
+  const header = document.querySelector(".kalender-nav h2");
+  const prevBtn = document.querySelector(".kalender-nav button:first-child");
+  const nextBtn = document.querySelector(".kalender-nav button:last-child");
+  const grid = document.querySelector(".kalender-grid");
+
+  prevBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    updateCalendar();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    updateCalendar();
+  });
+
+  function updateCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    header.textContent = `${monthNames[month]} ${year}`;
+    
+    // Här kan du lägga in dynamisk generering av kalendern (kommer i nästa steg)
+  }
+
+  updateCalendar(); // Visa startmånad
+  </script><script>
+  const monthNames = [
+    "Januari", "Februari", "Mars", "April", "Maj", "Juni",
+    "Juli", "Augusti", "September", "Oktober", "November", "December"
+  ];
+
+  let currentDate = new Date(2025, 4); // Startar i maj 2025
+
+  const header = document.querySelector(".kalender-nav h2");
+  const prevBtn = document.querySelector(".kalender-nav button:first-child");
+  const nextBtn = document.querySelector(".kalender-nav button:last-child");
+  const grid = document.querySelector(".kalender-grid");
+
+  prevBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    updateCalendar();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    updateCalendar();
+  });
+
+  function updateCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    header.textContent = `${monthNames[month]} ${year}`;
+    
+    // Här kan du lägga in dynamisk generering av kalendern (kommer i nästa steg)
+  }
+
+  updateCalendar(); // Visa startmånad
+  </script>
 </body>
 </html>
