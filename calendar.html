@@ -4,25 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kalender</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
-<body class="skogsbakgrund">
-  <div class="kalender-wrapper">
-    <header>
-      <h1>Kalender</h1>
-    </header>
+<body>
 
-    <div class="kalender-nav">
-      <button id="prev">Föregående</button>
-      <h2 id="kalender-titel"></h2>
-      <button id="next">Nästa</button>
-    </div>
+  <!-- Bakgrund -->
+  <div class="background-overlay"></div>
 
-    <div class="kalender-grid" id="kalender-grid">
-      <!-- Datum och veckonummer genereras med JavaScript -->
+  <!-- Titel -->
+  <h1 class="kalender-titel">Min Kalender</h1>
+
+  <!-- Kalendercontainer -->
+  <div class="kalender-container">
+    <table class="kalendertabell">
+      <thead>
+        <tr>
+          <th>Vecka</th>
+          <th>Mån</th>
+          <th>Tis</th>
+          <th>Ons</th>
+          <th>Tor</th>
+          <th>Fre</th>
+          <th>Lör</th>
+          <th>Sön</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Kalenderceller genereras med JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal för anteckningar -->
+  <div id="noteModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <textarea id="noteInput" placeholder="Skriv anteckning här..."></textarea>
+      <button id="saveNote">Spara</button>
     </div>
   </div>
 
+  <!-- JavaScript -->
   <script src="calendar.js"></script>
 </body>
 </html>
