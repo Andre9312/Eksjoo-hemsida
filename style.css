@@ -234,9 +234,3 @@ body.skogsbakgrund {
   border-radius: 4px;
   font-size: 0.9rem;
 }
-/* Visar anteckning i kalendern */
-.note {
-  font-size: 0.7rem;
-  margin-top: 4px;
-  color: #333;
-}
